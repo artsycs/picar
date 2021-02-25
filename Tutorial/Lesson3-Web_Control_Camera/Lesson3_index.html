@@ -1,0 +1,263 @@
+<html>
+<head>
+<title>Raspberry Pi Robot Car DIY Learning Kit Lesson 3: Web Control Camera</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+
+ <p style="text-align: left;">
+    <span style="font-size: 48px;"><img src="../../image\osoyoo_logo.jpg" title="" alt="osyoo logo.jpg"/></span>
+</p>
+<table  align="center" width="100%" border="0" cellspacing="1" cellpadding="3">
+  <tr> 
+<td align="center" width="33%"><a href="http://www.osoyoo.com">www.osoyoo.com</td>
+<td align="center" width="33%"><a>Email: osoyooproduct@gmail.com</td>
+<td align="center" width="33%"><a>Customer Service Hotline: +1-604-2821293</td>
+  </tr>
+  </table>
+<hr />
+<body>
+<h2 style="text-align: center;">
+<a href="../Lesson2-Line_Follow/Lesson2_index.html"><img class="alignnone wp-image-6442 size-full" src=".\image\1.jpg" alt="" width="156" height="41"></a>
+<a href="../../User_manual.html"><img class="alignnone wp-image-6443 size-full" src=".\image\2.jpg" alt="" width="236" height="39"></a>
+</h2></div>
+<h1><center>Raspberry Pi Robot Car DIY Learning Kit Lesson 3: Web Control Camera</center></h1>
+<center><video width="920" height="720" controls>
+  <source src="..\..\video\Lesson 3.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video></center>
+<table  align="center" width="70%" border="0" cellspacing="1" cellpadding="3">
+<tr><td>
+<ul>
+<li><strong><a href="#1">Objective</a></strong></li>
+<li><strong><a href="#2">Hardware Installation</a></strong></li>
+<li><strong><a href="#3">Software Installation</a></strong></li>
+<li><strong><a href="#4">Testing</a></strong></li>
+<li><strong><a href="#5">Android App</a></strong></li>
+</ul>
+<h1 style="text-align: center;"></h1>
+<p>
+	<span style="font-size:16px;"><strong><br>
+</strong></span>
+</p>
+<p><a id="1"></a></p>
+<h4 align="center"><font size="5" face="Arial">Objective</font></h4>
+<p align="left">In this lesson,  we will learn how to let the robot car 
+has vision to see front environment and how to control the robot car 
+through web browser or mobile APP. </p>
+<p align="left">To complete this task, we need install a web server 
+software called "mjpg-streamer" in Raspberry Pi, this software will 
+catch video from Robot Car camera and send the video to a web page.</p>
+<p align="left">We also need to install another web server software 
+called "WebIOPi" in Raspberry Pi. This software will allow user to use 
+browser to remotely control Raspberry Pi GPIO input/output and therefore
+ control the movement of our robot motor.</p>
+<p style="text-align: center;">&nbsp;</p>
+<p></p><h2 style="text-align: center;"><a href="#Top"><img id="img10" class="aligncenter" src=".\image\4.jpg" alt="top" width="150" height="30" border="0"></a></h2>
+<h4 class="style1" id="2" align="center"><span class="style3"><font size="5" face="Arial">Hardware Installation</font></span></h4>
+<p>If you don't install camera in <a href="../Lesson1-Basic_Framework_Installation/Lesson1_index.html">lesson1</a>,
+ please install and connect camera as following pictures. If you have 
+already installed and connected these, please skip this step.</p>
+<p><a href=".\image\37.jpg"><img src=".\image\37.jpg" alt="" class="aligncenter size-full wp-image-17364" width="1000" height="500"></a><br>
+<a href=".\image\38.jpg"><img src=".\image\38.jpg" alt="" class="aligncenter size-full wp-image-17365" width="1000" height="1000"></a></p>
+<h2 style="text-align:center;">
+		<a href="#Top"><img id="img2" class="aligncenter" src=".\image\4.jpg" alt="top" width="150" height="30" border="0"></a><br>
+	</h2>
+<h4 class="style1" id="3" align="center"><span class="style3"><font size="5" face="Arial">Software Installation</font></span></h4>
+<p><span style="color: #ff0000;">Note:<br>
+1. If your micro SD card has pre-installed Osoyoo Robot Image,please skip Step 1 to Step 8 and direct Run Step 9: Testing<br>
+2. Please keep the Raspberry Pi on battery power when using SSH to send command to Raspberry Pi terminal remotely.<br>
+</span></p>
+<p class="style2">
+        <strong>Step 1: Download WebIOPi/mjpg-streamer installation package by running following terminal commands</strong><span style="color: #ff0000;">(skip this step if your micro SD card has pre-installed Osoyoo Robot Image)</span></p>
+<p><em><span class="style3"><span class="style3">cd&nbsp;~</span><br>
+<span class="style3">sudo&nbsp; apt-get&nbsp; install&nbsp; rpi.gpio&nbsp; -y</span><br>
+<span class="style3">mkdir&nbsp; &nbsp;osoyoo-robot/cam-robot</span><br>
+<span class="style3">cd&nbsp; &nbsp;osoyoo-robot/cam-robot</span><br>
+<span class="style3">wget&nbsp; http://osoyoo.com/driver/WebIOPi-0.7.1.tar.gz</span><br>
+<span class="style3">wget&nbsp; http://osoyoo.com/driver/mjpg-streamer.tar.gz</span><br>
+<span class="style3">wget&nbsp; http://osoyoo.com/driver/robot.tar.gz</span><br>
+<span class="style3">tar&nbsp; -xzvf&nbsp; WebIOPi-0.7.1.tar.gz</span><br>
+<span class="style3">tar&nbsp; -xzvf&nbsp; &nbsp;mjpg-streamer.tar.gz</span><br>
+<span class="style3">tar&nbsp; -xzvf&nbsp; robot.tar.gz</span></span></em></p>
+<p class="style8"><strong>Following Step 2 to 4 are for WebIOPI server Installation</strong></p>
+<p class="style4"><strong>Step 2: Download and install WebIOPi patch by running following terminal command</strong><span style="color: #ff0000;">(skip this step if your micro SD card has pre-installed Osoyoo Robot Image)</span></p>
+<p><em><span class="style3"><span class="style3">cd&nbsp; ~/osoyoo-robot/cam-robot/WebIOPi-0.7.1/</span><br>
+<span class="style3">wget&nbsp; &nbsp;http://osoyoo.com/driver/webiopi-pi2bplus.patch</span><br>
+<span class="style3">patch&nbsp; &nbsp; -p1&nbsp; &nbsp;-i&nbsp; webiopi-pi2bplus.patch</span></span></em></p>
+<p><strong>Step 3: Install WebIOPi&nbsp; by running following terminal command</strong><span style="color: #ff0000;">(skip this step if your micro SD card has pre-installed Osoyoo Robot Image)</span><br>
+<span class="style3"><em>sudo&nbsp; ./setup.sh</em></span></p>
+<p><strong>You need verify the installation by typing following command</strong><br>
+<span class="style3"><em>webiopi&nbsp; -h</em></span></p>
+<p>If WebIOPi is installed successfully, you will see following message 
+in terminal, otherwise you might need redo the download and 
+installation.</p>
+<p><a href=".\image\39.jpg"><img src=".\image\39.jpg" alt="" class="aligncenter size-full wp-image-17389" width="891" height="307"></a></p>
+<p><strong>Step 4: Run webiopi by typing following command:</strong><span style="color: #ff0000;">(skip this step if your micro SD card has pre-installed Osoyoo Robot Image)</span></p>
+<p class="style3"><em><span class="style3">sudo&nbsp; webiopi&nbsp; -d&nbsp; -c&nbsp; /etc/webiopi/config</span></em></p>
+<p><span class="style3">Use a browser in another computer <font color="#FF0000">(your computer/PAD/Phone in same LAN of your Pi)</font> to visit your Pi's IP address with port <strong>"8000"</strong> ( i.e <a href="http://192.168.0.115:8000/">http://192.168.0.115:8000</a>,
+ please replace 192.168.0.115 with your Pi's local IP address), your 
+browser will show WebIOPi login page. You need use default WebIOPi user 
+name <strong>"webiopi"</strong> and default password <strong>"raspberry"</strong>
+ to login to the server. Once you are logged into WebIOPi page, you will
+ see WebIOPI Main Menu as following. If you can not see this page , you 
+need to reinstall the WebIOPI software.</span></p>
+<p><img class="aligncenter size-medium" src=".\image\40.jpg" width="465" height="285"></p>
+<p>Please press "Ctrl" + "C" then "Ctrl" + "Z" in your terminal to end WebIOPi running.</p>
+<p>Note: If you don't know your raspberry pi IP address, type following command in your terminal,<br>
+<em>ifconfig  wlan0</em></p>
+<p>Your raspberry Pi IP address is in the right side of the word inet addr:</p>
+<p><a href=".\image\41.jpg"><img src=".\image\41.jpg" alt="" class="aligncenter size-large wp-image-17500" width="1024" height="241"></a>
+<p<img class="aligncenter size-medium" src=".\image\42.jpg" width="695" height="226">
+</p<img></p><p><strong>Following Step 5 to 7 is for&nbsp; mjpg-streamer server Installation</strong></p>
+<p><strong>Step 5: If you are using CSI camera , please take following 
+action as per step A and B. (If you are using USB camera which comes 
+with the car, please skip this step)</strong><span style="color: #ff0000;">(skip this step if your micro SD card has pre-installed Osoyoo Robot Image)</span></p>
+<p><span class="style6"><strong>A. enable camera in Raspberry Pi</strong></span><br>
+<em><span class="style3">sudo&nbsp; raspi-config</span></em></p>
+<p><a href=".\image\42.jpg"><img src=".\image\42.jpg" alt="" class="aligncenter size-full wp-image-17397"></a></p>
+<p><span class="style6"><strong>B. edit "/etc/modules" file by typing following command(otherwise /dev has no camera device node)</strong></span><br>
+<em><span class="style3">sudo&nbsp; &nbsp;nano&nbsp;&nbsp;/etc/modules</span></em></p>
+<p class="style3">Please add the following line in the bottom of the 
+"/etc/modules" file, and then press "ctrl" + "x" and then "y" to save 
+the file and press "enter" exist nano editor<br>
+<span style="color: #ff00ff;">bcm2835-v4l2</span></p>
+<p><a href=".\image\43.jpg"><img src=".\image\43.jpg" alt="" class="aligncenter size-large wp-image-17501"></a></p>
+<p><strong>Step 6: download and install mjpg-streamer support library by typing following command</strong><span style="color: #ff0000;">(skip this step if your micro SD card has pre-installed Osoyoo Robot Image)</span></p>
+<p><em><span class="style3"><span class="style3">cd ~</span><br>
+<span class="style3">sudo apt-get update</span><br>
+<span class="style3">sudo apt-get install libv4l-dev libjpeg8-dev&nbsp;-y</span><br>
+<span class="style3">sudo apt-get install subversion -y</span></span></em></p>
+<p><strong>Step 7: Compile mjpg-streamer</strong><span style="color: #ff0000;">(skip this step if your micro SD card has pre-installed Osoyoo Robot Image)</span></p>
+<p><strong>Firstly, edit the configuration file "input_uvc.c" by typing following command</strong><br>
+<em>cd&nbsp; ~/osoyoo-robot/cam-robot/mjpg-streamer/plugins/input_uvc<br>
+sudo&nbsp; nano&nbsp;&nbsp;input_uvc.c</em></p>
+<p>Find following line(you can use "ctrl" + "W" to search the line when you enter nano editor)</p>
+<pre> int width=640, height=480, fps=5, format=V4L2_PIX_FMT_MJPEG</pre>
+<p>Replace the string <strong>V4L2_PIX_FMT_MJPEG</strong> with new string <strong>V4L2_PIX_FMT_YUYV</strong></p>
+<p>Then press "ctrl" + "x" and then "y" to save the file and press "enter" exist nano editor</p>
+<p><a href=".\image\44.jpg"><img src=".\image\44.jpg" alt="" class="aligncenter size-large wp-image-17504"></a></p>
+<p><strong>Secondly, we need compile the source code with following commands:</strong><br>
+  <em>cd&nbsp; ~/osoyoo-robot/cam-robot/mjpg-streamer<br>
+    make all</em></p>
+<p><strong>Thirdly, test camera installation: Plug your camera into Raspberry Pi, then type following command:</strong><br>
+   <em>ls&nbsp; &nbsp;/dev/video* </em></p>
+<p>You should see following result in your terminal, "/dev/video0" is the camera installed in Pi</p>
+<p><a href=".\image\45.jpg"><img src=".\image\45.jpg" alt="" class="aligncenter size-full wp-image-17411"></a></p>
+<p><strong>At last, Run mjpg-streamer Server by typing following command in terminal:</strong><br>
+<em>cd ~/osoyoo-robot/cam-robot/mjpg-streamer<br>
+sudo ./start.sh</em></p>
+<p><a href=".\image\46.jpg"><img src=".\image\46.jpg" alt="" class="aligncenter size-large wp-image-17506"></a></p>
+<p>Now use browser in another computer to access your Raspberry Pi IP 
+address with port 8899 (i.e, if your Pi IP address is 192.168.0.115, 
+visit <a href="http://192.168.0.115:8899/">http://192.168.0.115:8899</a>
+ in your browser), you will see following image. Click Stream button in 
+left menu, you will see the real time video captched by the camera in 
+your Raspberry Pi</p>
+<p><img class="aligncenter size-medium" src=".\image\47.jpg"></p>
+<p>You can use Ctrl C command in terminal to end the&nbsp; mjpg-streamer server</p>
+<p><strong>Step 8: To combine webiopi and&nbsp; mjpg-streamer into same 
+webpage which allows we "see" video from camera and control Robot Car 
+with brower, we need change some default setting of WebIOPi and 
+MJPG-streamer. To do so, we need to edit config file by typing following
+ command and modify this file as Modification A, Modification B, 
+Modification C:</strong><span style="color: #ff0000;">(skip this step if your micro SD card has pre-installed Osoyoo Robot Image)</span></p>
+<p><em>sudo&nbsp; nano&nbsp; /etc/webiopi/config</em></p>
+<p><strong>Modification A</strong>: replace webiopi default script python file which allow us to send control signal to Pi from Browser, please add following <span style="color: #ff00ff;">pink line</span> into "/etc/webiopi/config" file</p>
+<pre>[SCRIPTS]
+# Load custom scripts syntax :
+# name = sourcefile
+#each sourcefile may have setup, loop and destroy functions and macros
+#myscript = /home/pi/WebIOPi-0.7.1/examples/scripts/macros/script.py
+<span style="color: #ff00ff;">myscript = /home/pi/osoyoo-robot/cam-robot/robot/script.py</span></pre>
+<p><strong>Modification B</strong>. change webiopi default html file path by adding following <span style="color: #ff00ff;">pink line</span>:</p>
+<pre># Use doc-root to change default HTML and resource files location
+#doc-root = /home/pi/WebIOPi-0.7.1/examples/servo-control
+<span style="color: #ff00ff;">doc-root = /home/pi/osoyoo-robot/cam-robot/robot</span></pre>
+<p><strong>Modification C</strong>. Add PCA9685 address into config by addling following <span style="color: #ff00ff;">pink line</span></p>
+<pre>[DEVICES]]
+# Device configuration syntax:
+# name = device [args...]
+# name   : used in the URL mapping
+#device : device name
+#args   : (optional) see device driver doc
+#If enabled, devices configured here are mapped on REST API /device/name
+#Devices are also accessible in custom scripts using deviceInstance(name)
+#See device driver doc for methods and URI scheme available
+
+# Raspberry native UART on GPIO, uncomment to enable
+# Don't forget to remove console on ttyAMA0 in /boot/cmdline.txt
+# And also disable getty on ttyAMA0 in /etc/inittab
+#serial0 = Serial device:ttyAMA0 baudrate:9600
+
+# USB serial adapters
+#usb0 = Serial device:ttyUSB0 baudrate:9600
+#usb1 = Serial device:ttyACM0 baudrate:9600
+
+#temp0 = TMP102
+#temp1 = TMP102 slave:0x49
+#temp2 = DS18B20
+#temp3 = DS18B20 slave:28-0000049bc218
+
+#bmp = BMP085
+
+#gpio0 = PCF8574
+#gpio1 = PCF8574 slave:0x21
+
+#light0 = TSL2561T
+#light1 = TSL2561T slave:0b0101001
+
+#gpio0 = MCP23017
+#gpio1 = MCP23017 slave:0x21
+#gpio2 = MCP23017 slave:0x22
+<span style="color: #ff00ff;">pwm0 = PCA9685 slave:0x40</span>
+#pwm1 = PCA9685 slave:0x41
+
+#adc0 = MCP3008
+#adc1 = MCP3008 chip:1 vref:5
+#dac1 = MCP4922 chip:1</pre>
+<p>
+    Finally, press "ctrl" + "x" and then "y" to save the file and press "enter" exist nano editor</p>
+<h2 style="text-align:center;">
+		<a href="#Top"><img id="img2" class="aligncenter" src=".\image\4.jpg" alt="top" width="150" height="30" border="0"></a><br>
+	</h2>
+<h4 class="style1" id="4" align="center"><span class="style3"><font size="5" face="Arial">Testing</font></span></h4>
+<p><span class="style3"><font size="5" face="Arial">Step 9:Testing</font></span></p>
+<p>    Now you can put your car on the ground and turn on the 
+power-switch in battery box. We need to use SSH to control the car. So 
+you must enable SSH with raspi-config command before testing.&nbsp; If 
+you are using windows, please use download Putty to ssh your Pi, if you 
+are using MacBook, please directly use ssh command in terminal.</p>
+<p>1. To start mjpg-streamer, in ssh terminal, please type followinig command:<br>
+<em>cd ~/osoyoo-robot/cam-robot/mjpg-streamer<br>
+sudo ./start.sh</em></p>
+<p><a href=".\image\48.jpg"><img src=".\image\48.jpg" alt="" class="aligncenter size-full wp-image-17419" width="963" height="282"></a></p>
+<p>2. To start webiopi, please open another ssh window and type following command:<br>
+<em>sudo webiopi -d -c /etc/webiopi/config</em></p>
+<p>Now you can use your browse to acess Raspberry IP with port 8000(i.e, if your Pi IP address is 192.168.0.115, please visit <a href="http://192.168.0.115:8000/"> http://192.168.0.115:8000</a>, you will see following picture in your browser, click arrow buttons, you can make car moving to your desired directions.</p>
+<p><a href=".\image\49.jpg"><img src=".\image\49.jpg" alt="" class="aligncenter size-full wp-image-17372" width="861" height="528"></a></p>
+<h2 style="text-align:center;">
+		<a href="#Top"><img id="img2" class="aligncenter" src=".\image\4.jpg" alt="top" width="150" height="30" border="0"></a><br>
+	</h2>
+<h4 class="style1" id="5" align="center"><span class="style3"><font size="5" face="Arial">Android App</font></span></h4>
+<p>You can also use our free <font color="#FF0000">Android App</font> instead of browser to control the car. Download the app from <a href="http://osoyoo.com/driver/osoyoo-robot.apk">http://osoyoo.com/driver/osoyoo-robot.apk</a> 
+<a href=".\image\APP.jpg"><img src=".\image\APP.jpg" alt="" class="aligncenter size-full wp-image-17886" width="400" height="400"></a></p>
+<p>Run the App, click set up and enter config page set the fields as following:</p>
+<p><strong> Robot IP:<br></strong><br>
+<strong>your raspberrr pi ip Port:</strong> 8000<br>
+<strong>Video URL:</strong> <span class="style3">http://your_raspberry_pi_ip:8899/?action=stream(please use IP such as 192.168.0.16 to replace your_raspberry_pi_ip)</span><br>
+<strong>User Name:</strong> webiopi<br>
+<strong>Password:</strong> raspberry</p>
+<p>Click Save button and exit config page</p>
+<p><a href=".\image\50.jpg"><img src=".\image\50.jpg" alt="" class="aligncenter size-full wp-image-17468" width="1000" height="735"></a></p>
+<p>Now you can use the arrow buttons in App to control the car</p>
+</div>
+</div>
+<h2 style="text-align:center;">
+		<a href="#Top"><img id="img2" class="aligncenter" src=".\image\4.jpg" alt="top" width="150" height="30" border="0"></a><br>
+	</h2>
+<h2 style="text-align: center;">
+<a href="../Lesson2-Line_Follow/Lesson2_index.html"><img class="alignnone wp-image-6442 size-full" src=".\image\1.jpg" alt="" width="156" height="41"></a>
+<a href="../../User_manual.html"><img class="alignnone wp-image-6443 size-full" src=".\image\2.jpg" alt="" width="236" height="39"></a>
+</h2></div>
+</body></html>

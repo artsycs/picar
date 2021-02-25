@@ -1,0 +1,129 @@
+<html>
+<head>
+<title>Raspberry Pi Robot Car DIY Learning Kit Lesson 2: Line Follow</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+
+ <p style="text-align: left;">
+    <span style="font-size: 48px;"><img src="../../image\osoyoo_logo.jpg" title="" alt="osyoo logo.jpg"/></span>
+</p>
+<table  align="center" width="100%" border="0" cellspacing="1" cellpadding="3">
+  <tr> 
+<td align="center" width="33%"><a href="http://www.osoyoo.com">www.osoyoo.com</td>
+<td align="center" width="33%"><a>Email: osoyooproduct@gmail.com</td>
+<td align="center" width="33%"><a>Customer Service Hotline: +1-604-2821293</td>
+  </tr>
+  </table>
+<hr />
+<body>
+<h2 style="text-align: center;">
+<a href="../Lesson1-Basic_Framework_Installation/Lesson1_index.html"><img class="alignnone wp-image-6442 size-full" src=".\image\1.jpg" alt="" width="156" height="41"></a>
+<a href="../../User_manual.html"><img class="alignnone wp-image-6443 size-full" src=".\image\2.jpg" alt="" width="236" height="39"></a>
+<a href="../Lesson3-Web_Control_Camera/Lesson3_index.html"><img class="alignnone wp-image-6445 size-full" src=".\image\3.jpg" alt="" width="156" height="41"></a>
+</h2></div>
+<h1><center>Raspberry Pi Robot Car DIY Learning Kit Lesson 2: Line Follow</center></h1>
+<center><video width="920" height="720" controls>
+  <source src="..\..\video\Lesson 2.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video></center>
+<table  align="center" width="70%" border="0" cellspacing="1" cellpadding="3">
+<tr><td>
+<ul>
+<li><strong><a href="#1">Objective</a></strong></li>
+<li><strong><a href="#4">Hardware Installation</a></strong></li>
+<li><strong><a href="#5">Software Installation</a></strong></li>
+<li><strong><a href="#6">Testing</a></strong></li>
+</ul>
+<p><a id="1"></a></p>
+<h4 align="center">Objective</h4>
+<p>In this lesson, we will use black/white tracking sensors to guide robot car 
+to trace a black track in the white ground. If you have not completed 
+installation in Lesson 1, please review <a href="http://osoyoo.com/2017/12/06/lesson-1rpi-robot-car-test/" target="_blank" rel="noopener noreferrer">
+Lesson 1.</a></p>
+<p>(Note: in lesson 1, 5 black/white tracking sensors have been installed and 
+connected to Raspberry Pi to prepare for lesson 2)</p>
+<p style="text-align: center;"><img class="size-full aligncenter" src=".\image\5.jpg" width="800" height="800"></p>
+<h2 style="text-align: center;"><a href="#Top"><img id="img10" class="aligncenter" src=".\image\4.jpg" alt="top" width="150" height="30" border="0"></a></h2>
+<p><a id="4"></a></p>
+<h4 align="center">Hardware Installation</h4>
+<p>If you don&#39;t install 5 tracking sensor modules in <a href="http://osoyoo.com/2017/12/06/lesson-1rpi-robot-car-test/">
+lesson1</a>, please install and connect these modules as following pictures. If 
+you have already installed and connected these, please skip this step.</p>
+<p><a href=".\image\37.jpg"><img class="aligncenter size-full wp-image-17256" src=".\image\37.jpg" alt="" width="1000" height="500"></a><br>
+<a href=".\image\38.jpg"><img class="aligncenter size-full wp-image-17257" src=".\image\38.jpg" alt="" width="1000" height="1000"></a></p>
+<h2 style="text-align: center;"><a href="#Top"><img id="img10" class="aligncenter" src=".\image\4.jpg" alt="top" width="150" height="30" border="0"></a></h2>
+<p><a id="5"></a></p>
+<h4 align="center">Software Installation</h4>
+<p><span style="color: #ff0000;">Note:<br>
+1. if you use our image as OS system as <a href="http://osoyoo.com/2017/12/06/lesson-1rpi-robot-car-test/">
+lesson1</a>, please skip Software Installation and go to Step2 to adjust the 
+sensitivity of tracking sensor module or the step &quot;test tracking line&quot;<br>
+2. Please keep the raspberry Pi on power when using SSH to send command to 
+Raspberry Pi terminal remotely.<br>
+</span></p>
+<p><strong>Step 1:Download line-tracking sample code with following terminal 
+command</strong><span style="color: #ff0000;">(skip this step if your micro SD 
+card has pre-installed Osoyoo Robot Image)</span>:<br>
+<em>cd ~/osoyoo-robot/</em><br>
+<em>wget http://osoyoo.com/driver/lf.tar.gz</em><br>
+<em>tar -zxvf lf.tar.gz</em></p>
+<p><a href=".\image\39.jpg"><img src=".\image\39.jpg" alt="" class="aligncenter size-large wp-image-17508" width="1024" height="510"></a></p>
+<p><span style="color: #ff0000;">Note: Above commands will download sample code 
+file to osoyoo-robot/lf directory</span></p>
+<p><strong>Step 2: Test Black/White Tracking sensors</strong></p>
+<p><strong>There are 5 black/white tracking sensors in the forehead of the car. 
+Each sensor has two LED lights . The red LED indicates power. The green LED 
+indicates black/white. When black is detected, Green LED will turn off and a &quot;1&quot; 
+will be sent to Raspberry Pi GPIO pin, otherwise LED will ON and a &quot;0&quot; will be 
+sent.</strong><br>
+* To make sensors working properly, you need use a screw driver to adjust the 
+sensitivity screw on each sensor and make sure Green LED will ON when it is over 
+White and Off when it is over Black.</p>
+<p><a href=".\image\40.jpg"><img class="aligncenter size-full wp-image-17309" src=".\image\40.jpg" alt="" width="1000" height="700"></a></p>
+<p>If you want to learn more about adjust tracking module, please follow the 
+next vedio:</p>
+<h2 style="text-align: center;"><iframe src="https://youtu.be/H1RuMCsZz4k" width="854" height="480" frameborder="0"></iframe></h2>
+<p><strong>Following python code and experiment will tell you if the sensors are 
+installed correctly.<br>
+First, put a 2 cm black track on white ground, then put your car over the track 
+and turn on battery.<br>
+Next, use SSH to connect your Raspberry Pi remotely from your PC(use Putty if 
+you are using Windows), and type following terminal command:</strong><br>
+<em>cd ~/osoyoo-robot/lf</em><br>
+<em>python test.py</em></p>
+<p>When your put the first sensor(from right) on the black track, the green LED 
+will turn off and your will see Putty terminal window show 00001 as following:</p>
+<h2 style="text-align: center;"><a href=".\image\41.jpg"><img src=".\image\41.jpg" alt="" class="aligncenter size-full wp-image-17331" width="831" height="697"></a><p></p>
+</h2>
+<p>This means Raspberry Pi detected WHITE(0) from 4 sensors in the left and 
+Black(1) from the right edge sensor. You can change the position of the black 
+track from right to left sensors one by one and make the result change from 
+00001 to 00010,00100,01000,10000.If your result is not showed as above, you 
+might need to double check if the sensor sensitivity and connection to the Pi is 
+correct.</p>
+<h2 style="text-align: center;"><a href="#Top"><img id="img10" class="aligncenter" src=".\image\4.jpg" alt="top" width="150" height="30" border="0"></a></h2>
+<p><a id="6"></a></p>
+<h4 align="center">Testing line tracking </h4>
+<p><strong>First, make a black track on white ground. The track can be round or 
+curve , but the turning angle of each curve should not be too sharp. We suggest 
+user use 2cm width black tape sticking on white ceramic tile and make a nice 
+track.</strong></p><strong>
+<p>Next put your car over the track and turn on the power switch on battery box.</p>
+</strong><p><strong>Last, use SSH to connect Raspberry Pi through your PC and 
+typing following commands:</strong><br>
+<em>cd ~/osoyoo-robot/lf<br>
+python line_follow.py</em></p>
+<h2 style="text-align: center;">
+<a href=".\image\42.jpg"><img src=".\image\42.jpg" alt="" class="aligncenter size-full wp-image-17333" width="775" height="201"></a></h2>
+<p>After above command is sent to raspberry Pi, your car will start moving along 
+the black track automatically.</p>
+<h2 style="text-align: center;">
+<a href=".\image\43.jpg"><img src=".\image\43.jpg" alt="" class="aligncenter size-full wp-image-17337" width="1000" height="780"></a></h2>
+<h2 style="text-align: center;"><a href="#Top"><img id="img10" class="aligncenter" src=".\image\4.jpg" alt="top" width="150" height="30" border="0"></a></h2>
+<h2 style="text-align: center;">
+<a href="../Lesson1-Basic_Framework_Installation/Lesson1_index.html"><img class="alignnone wp-image-6442 size-full" src=".\image\1.jpg" alt="" width="156" height="41"></a>
+<a href="../../User_manual.html"><img class="alignnone wp-image-6443 size-full" src=".\image\2.jpg" alt="" width="236" height="39"></a>
+<a href="../Lesson3-Web_Control_Camera/Lesson3_index.html"><img class="alignnone wp-image-6445 size-full" src=".\image\3.jpg" alt="" width="156" height="41"></a>
+</h2></div>
+</body></html>
