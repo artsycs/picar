@@ -1,0 +1,189 @@
+<html>
+<head>
+<title>Raspberry Pi Robot Car DIY Learning Kit Lesson 1: Basic Framework Installation</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+
+ <p style="text-align: left;">
+    <span style="font-size: 48px;"><img src="../../image\osoyoo_logo.jpg" title="" alt="osyoo logo.jpg"/></span>
+</p>
+<table  align="center" width="100%" border="0" cellspacing="1" cellpadding="3">
+  <tr> 
+<td align="center" width="33%"><a href="http://www.osoyoo.com">www.osoyoo.com</td>
+<td align="center" width="33%"><a>Email: osoyooproduct@gmail.com</td>
+<td align="center" width="33%"><a>Customer Service Hotline: +1-604-2821293</td>
+  </tr>
+  </table>
+<hr />
+<h2 style="text-align: center;">
+<a href="../../User_manual.html"><img class="alignnone wp-image-6443 size-full" src=".\image\2.jpg" alt="" width="236" height="39"></a>
+<a href="../Lesson2-Line_Follow/Lesson2_index.html"><img class="alignnone wp-image-6445 size-full" src=".\image\3.jpg" alt="" width="156" height="41"></a>
+</h2></div>
+<body>
+<h1><center>Raspberry Pi Robot Car DIY Learning Kit Lesson 1: Basic Framework Installation</center></h1>
+<table  align="center" width="70%" border="0" cellspacing="1" cellpadding="3">
+<tr><td>
+<ul>
+<li><strong><a href="#1">Objective</a></strong></li>
+<li><strong><a href="#2">Hardware Installation</a></strong></li>
+<li><strong><a href="#3">Software Installation</a></strong></li>
+<li><strong><a href="#4">Testing</a></strong></li>
+</ul>
+<h1 style="text-align: center;"></h1>
+<p>
+	<span style="font-size:16px;"><strong><br>
+</strong></span>
+</p>
+<p><a id="1"></a></p>
+<h4 align="center"><font size="5" face="Arial">Objective</font></h4>
+<p align="left">In this lesson, we will install the most important framework in the smart car and 
+make car to do some simple movements as per our python sample code.  </p>
+<p align="left">If you have passed the test movement of this lesson, that means Arduino, voltage 
+meter,motor drive module(Model-PI), motors, batteries，chassis and wire connections between these
+ parts are all functioning well.</p>
+<p align="left">As your experiments in future lessons are all based on frame work of Lesson One, 
+it is very important to test the installation and sample code in this Lesson properly.
+<h2 style="text-align:center;">
+		<a href="#Top"><img id="img2" class="aligncenter" src=".\image\4.jpg" alt="top" width="150" height="30" border="0"></a><br>
+	</h2>
+<h4 class="style1" id="2" align="center"><span class="style3"><font size="5" face="Arial">Hardware Installation</font></span></h4>
+<center><video width="920" height="720" controls>
+  <source src="..\..\video\Lesson1-Part1-Hardware_installation.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video></center>
+<p><strong>STEP1. Install driving wheels as follows.</strong></p>
+<p><a href="./image/STEP1_1.jpg"><img class="aligncenter wp-image-17834 size-full" src="./image/STEP1_1.jpg" alt="" width="1000" height="500" /></a></p>
+<p><a href="./image/STEP1_2.jpg"><img class="aligncenter wp-image-17834 size-full" src="./image/STEP1_2.jpg" alt="" width="1000" height="500" /></a></p>
+<p><strong>STEP2. Install universal wheel as follows.</strong></p>
+<p><a href="./image/STEP2.jpg"><img class="aligncenter wp-image-17834 size-full" src="./image/STEP2.jpg"alt="" width="1000" height="500" /></a></p>
+<p><strong>STEP3. Install PCA9685 compatible module.</strong></p>
+<p><a href="./image/STEP3.jpg"><img class="aligncenter size-large wp-image-17837" src="./image/STEP3.jpg" alt="" width="1000" height="500" /></a></p>
+<p><strong>STEP4. Install voltage meter as follows.</strong></p>
+<p><a href="./image/STEP4.jpg"><img class="aligncenter size-full wp-image-17838" src="./image/STEP4.jpg" alt="" width="1000" height="500" /></a></p>
+<p><strong>STEP5. Install 5 pcs tracking sensor as follows.</strong></p>
+<p><a href="./image/STEP5.jpg"><img class="aligncenter size-full wp-image-17839" src="./image/STEP5.jpg" alt="" width="1000" height="500" /></a></p>
+<p><strong>STEP6.Plug the 4 pin female to female cable (white,red,black,yellow) and 2 pin female to female cable(black,red) into PCA9685 compatible board as follows.</strong></p>
+<p><a href="./image/STEP6.jpg"><img class="aligncenter size-full wp-image-17840" src="./image/STEP6.jpg" alt="" width="1000" height="500" /></a></p>
+<p><strong>STEP7.Plug the 2 PCS 1 pin to 5 pin female to female cable (Black and Red) into PCA9685 compatible board as follows.</strong></p>
+<p><a href="./image/STEP7.jpg"><img class="aligncenter size-full wp-image-17841" src="./image/STEP7.jpg" alt="" width="1000" height="500" /></a><a href="./image/STEP7-tracking_sensor-PCA9685.jpg"><img class="aligncenter size-full wp-image-17842" src="./image/STEP7-tracking_sensor-PCA9685.jpg" alt="" width="1000" height="500" /></a></p>
+<p><strong>STEP8.Install the model pi motor driver board as follows. Then connect PCA9685 compatible module to motor driver board via 4pin and 2 pin cable.Meanwhile, connect the voltage meter to motor driver board via 3pin cable.<br />
+</strong></p>
+<p><a href="./image/STEP8.jpg"><img class="aligncenter size-full wp-image-17879" src="./image/STEP8.jpg" alt="" width="1000" height="500" /></a></p>
+<p><a href="./image/STEP8_PAC9685-motor_driver_board.jpg"><img class="aligncenter wp-image-17403 size-full" src="./image/STEP8_PAC9685-motor_driver_board.jpg" alt="" width="1000" height="500" /></a><a href="./image/STEP8-Voltage_meter-motor_driver_board.jpg"><img class="aligncenter wp-image-17650 size-full" src="./image/STEP8-Voltage_meter-motor_driver_board.jpg" alt="" width="1000" height="500" /></a></p>
+<p><strong>STEP9.Install camera module on the top car chassis as follows.</strong></p>
+<p><a href="./image/STEP9-camera.jpg"><img class="aligncenter size-full wp-image-17844" src="./image/STEP9-camera.jpg" alt="" width="1000" height="500" /></a></p>
+<p><strong>STEP10.Install battery box on the top car chassis as follows.</strong></p>
+<p><a href="./image/STEP10.jpg"><img class="aligncenter size-full wp-image-17845" src="./image/STEP10.jpg" alt="" width="1000" height="500" /></a></p>
+<p><strong>STEP11.Install raspberry pi on the top car chassis as follows.</strong></p>
+<p><a href="./image/STEP11.jpg"><img class="aligncenter size-full wp-image-17876" src="./image/STEP11.jpg" alt="" width="1000" height="500" /></a></p>
+<p><strong>STEP12.Intall the top chassis as follows.</strong></p>
+<p><a href="./image/STEP12.jpg"><img class="aligncenter size-full wp-image-17905" src="./image/STEP12.jpg" alt="" width="1000" height="500" /></a></p>
+<p><strong>STEP13.Before intall the top chassis as follows, you need to plug the battery box into model pi motor driver, then connect the Raspberry Pi board to PCA9685 compatible module adn model Pi motor driver board as follows.</strong></p>
+<p><a href="./image/STEP13_PCA9685-raspberry_pi.jpg"><img class="aligncenter wp-image-17404 size-full" src="./image/STEP13_PCA9685-raspberry_pi.jpg" alt="" width="1000" height="500" /></a></p>
+<p><a href="./image/STEP13-battery_box_and_power.jpg"><img class="aligncenter size-full wp-image-17906" src="./image/STEP13-battery_box_and_power.jpg" alt="" width="1000" height="500" /></a></p>
+<p><strong>STEP14.Install the left and right wheels.</strong></p>
+<p><a href="./image/STEP14.jpg"><img class="aligncenter size-full wp-image-17908" src="./image/STEP14.jpg" alt="" width="1000" height="500" /></a></p>
+<h2 style="text-align: center;"><a href="#Top"><img id="img10" class="aligncenter" src="./image/4.jpg" alt="top" width="150" height="30" border="0" /></a></h2>
+<h4 id="3" align="center"><span style="font-family: Arial; font-size: x-large;">Software Installation</span></h4>
+<p><Strong>If your SD card has pre-installed Osoyoo Robot Image, Please watch this video</strong></p>
+<center><video width="920" height="720" controls>
+  <source src="..\..\video\Lesson1-PartII-Software_installation_for_SDcard_has_pre-installed_Image.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video></center>
+<p><Strong>If your SD card is a new card (at least 16g), Please watch this video</strong></p>
+<center><video width="920" height="720" controls>
+  <source src="..\..\video\Lesson1-PartII-Software_installation_for_your_new_SD_card.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video></center>
+<p><strong>Software Preparation:</strong></p>
+<p>Imager utility: <a href="https://sourceforge.net/projects/win32diskimager/">Win32DiskImager utility</a></p>
+<p>OS: <a href="https://downloads.raspberrypi.org/raspbian/images/">Raspbian</a> (Use OS Raspbian 2018-04-18 in the subsequent tutorials)</p>
+<p>Format Tool: <a href="https://www.sdcard.org/downloads/formatter_4/">SDFormatter</a> (Optional)</p>
+<p>SSH Tool: <a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/">PuTTY</a> (for Windows users)</p>
+<p><b>Step 0:Before connect to Raspberry Pi, you need to install Raspbian Operation System(OS) onto SD card</b><span style="color: #ff0000;">(skip this step if your SD card has pre-installed Osoyoo Robot Image).</span></p>
+<p>You can select the latest version of RASPBIAN system on the official website: <a>https://downloads.raspberrypi.org/raspbian/images/</a>. Write the image via <a href="https://sourceforge.net/projects/win32diskimager/">Win32DiskImager utility</a> into your microSD/TF card(minimum 16G), then plug the card into the slot on your Raspberry Pi.</p>
+<p><a href="./image/write_raspbian.jpg"><img class="aligncenter wp-image-17566 size-full" src="./image/write_raspbian.jpg" alt="" width="424" height="216" /></a></p>
+<p><strong>Step 1: Connect Wifi</strong><br />
+Firstly, Connect Raspberry Pi to your HDMI monitor or TV. Put a keyboard and mouse into Raspberry Pi USB ports. Insert SD card into the slot on your Raspberry Pi.</p>
+<p><a img class="aligncenter href="./image/Step1-1-raspi_connect_to screen.jpg"><img class="aligncenter wp-image-17550 size-large" src="./image/Step1-1-raspi_connect_to screen.jpg" alt="" width="1024" height="887" /></a></p>
+<p>Click on the wireless icon top right on desktop, should give a list of access points, select your wifi ssid and connect it. Once your Pi is connect to Wifi, you can hover your mouse to the wifi icon to see the your IP address.</p>
+<p>Or your can type<em> sudo ifconfig wlan0</em> command in terminal. Your local ip address will show in wlan0 block(right side of the word<em> inet addr:</em>). It will look like 192.168......</p>
+<p>Please remember above IP address, it will be used in our next steps.<a href="./image/step1-terminal_ip_address.jpg"><img class="aligncenter wp-image-17555 size-large" src="./image/step1-terminal_ip_address.jpg" alt="" width="1024" height="576" /></a></p>
+<p><strong>Step 2: Open SSH connection</strong></p>
+<p>SSH enable user to type shell command remotely from internet so that we can control the car through wifi.In order to enable SSH function, we need type following command from terminal:</p>
+<p><em>sudo raspi-config</em></p>
+<p>Then select Advanced Options or Interfacing Options->SSH->Yes->Ok->Finish</p>
+<p><a img href="./image/step2-1-advanced_option.jpg"><img class="aligncenter wp-image-17559 size-full" src="./image/step2-1-advanced_option.jpg" alt=""/></a> 
+<a img href="./image/step2-2-SSH.jpg"><img class="aligncenter wp-image-17567 size-full" src="./image/step2-2-SSH.jpg" alt=""/></a> 
+<a href="./image/sstep2-3-SSH_Yes.jpg"><img class="aligncenter wp-image-17568 size-full" src="./image/step2-3-SSH_Yes.jpg" alt=""/></a>
+<a href="./image/step2-5-SSH_finish.jpg"><img class="aligncenter size-full wp-image-17912" src="./image/step2-5-SSH_finish.jpg" alt=""/></a></p>
+<p><strong><span style="font-size: 14px;">Step 3:Use SSH to connect Raspberry Pi terminal remotely</span></strong></p>
+<p>In order to make the car moving freely, we need disconnect Raspberry Pi from monitor, keyboard/mouse and use SSH to send command to Raspberry Pi terminal remotely.</p>
+<p>If you are using Windows to send ssh command. you need download a free software called PuTTy to connect the Raspberry Pi local IP(you got from STEP 1).</p>
+<p><a href="./image/open_putty.jpg"><img class="aligncenter wp-image-17572 size-full" src="./image/open_putty.jpg" alt="" /></a></p>
+<p>If you are using MacBook or other linux computer, please type:</p>
+<p>ssh<em> your_raspberry_pi_local_ip_address </em></p>
+<p>*<em>your_raspberry_pi_local_ip_address means the wifi IP address you got from STEP 1</em></p>
+<p><span style="font-size: 14px;">When connecting ssh, you need use default user name </span><em><b>pi</b> </em><span style="font-size: 14px;">and default password </span><em><b>raspberry</b> </em><span style="font-size: 14px;">to login to Raspberry Pi.</span></p>
+<p><a href="./image/step3-3-putty_login_pi.jpg"><img class="aligncenter wp-image-17573 size-full" src="./image/step3-3-putty_login_pi.jpg" alt=""/></a></p>
+<p><strong><span style="color: #ff0000;">Important Note:As the raspberry pi robot car image was written into SD Card, you just need to follow the step 1 to 3 and skip Step 4 to Step 5, directly run the step 6<span style="font-size: 14px;">Testing Python code.</span></span></strong></p>
+<p><strong>Step 4: Open I2C function</strong><span style="color: #ff0000;">(skip this step if your SD card has pre-installed Osoyoo Robot Image)</span></p>
+<p>I2C is a protocol which will be used to exchange data with I2C device. In our project, I2C device is PCA9685 module.In order to use I2C function, we need type following command from terminal:</p>
+<p><em>sudo raspi-config</em></p>
+<p>Then select  Advanced Options or Interfacing Options->I2C->Yes->Ok->Finish</p>
+<p><a href="./image/step3-1-advanced_option .jpg"><img class="aligncenter wp-image-17570 size-full" src="./image/step3-1-advanced_option .jpg" alt=""/></a> 
+<a href="./image/step3-2-I2C.jpg"><img class="aligncenter wp-image-17571 size-full" src="./image/step3-2-I2C.jpg" alt="" /></a>
+<a href="./image/step3-3-I2C_Yes.jpg"><img class="aligncenter size-full wp-image-17913" src="./image/step3-3-I2C_Yes.jpg" alt="" /></a>
+<a href="./image/step3-4-I2C-OK.jpg"><img class="aligncenter size-full wp-image-17913" src="./image/step3-4-I2C-OK.jpg" alt=""/></a>
+<a href="./image/step3-5-I2C_finish.jpg"><img class="aligncenter size-full wp-image-17913" src="./image/step3-5-I2C_finish.jpg" alt=""/></a><br />
+<strong>Step 5: Install GPIO Library</strong><span style="color: #ff0000;">(skip this step if your SD card has pre-installed Osoyoo Robot Image)</span></p>
+<ul>
+<li>(1)Update Rasbian Repository by typing following terminal command</li>
+</ul>
+<pre class="prettyprint lang-bsh">cd ~ 
+sudo apt-get update</pre>
+<a href="./image/step5-5-1.jpg"><img class="aligncenter size-full wp-image-17913" src="./image/step5-5-1.jpg" alt=""/></a>
+<ul>
+<li><strong>(2)Install python-pip , python-sumbus and github </strong></li>
+</ul>
+<pre class="prettyprint lang-bsh">sudo apt-get install build-essential python-pip python-dev python-smbus git</pre>
+<a href="./image/step5-5-2.jpg"><img class="aligncenter size-full wp-image-17913" src="./image/step5-5-2.jpg" alt=""/></a>
+<ul>
+<li><strong>(3)Install GPIO Library by typing following terminal command</strong></li>
+</ul>
+<pre class="prettyprint lang-bsh">git clone https://github.com/adafruit/Adafruit_Python_GPIO.git 
+cd Adafruit_Python_GPIO 
+sudo python setup.py install</pre>
+<a href="./image/step5-5-3.jpg"><img class="aligncenter size-full wp-image-17913" src="./image/step5-5-3.jpg" alt=""/></a>
+<ul>
+<li><strong>(4)Typing following terminal command to remove installation files and save disk space</strong></li>
+</ul>
+<pre class="prettyprint lang-bsh">cd ~ 
+sudo rm -fr Adafruit_Python_GPIO</pre>
+<a href="./image/step5-5-4.jpg"><img class="aligncenter size-full wp-image-17913" src="./image/step5-5-4.jpg" alt=""/></a>
+<p><strong>Testing Previous Installation</strong><span style="color: #ff0000;">(skip this step if your SD card has pre-installed Osoyoo Robot Image)</span></p>
+<ul>
+<li><strong>(5)Download testing python code by typing following commands:</strong></li>
+</ul>
+<pre class="prettyprint lang-bsh">cd ~ 
+mkdir osoyoo-robot/ 
+cd osoyoo-robot/ 
+wget http://osoyoo.com/driver/motor-test.tar.gz
+tar -zxvf motor-test.tar.gz
+</pre>
+<a href="./image/step5-5-5.jpg"><img class="aligncenter size-full wp-image-17913" src="./image/step5-5-5.jpg" alt=""/></a>
+<h2 style="text-align: center;"><a href="#Top"><img id="img10" class="aligncenter" src="http://osoyoo.com/download/photo/button39.jpg" alt="top" width="150" height="30" border="0" /></a></h2>
+<h4 class="style1" id="4" align="center"><span class="style3"><font size="5" face="Arial">Testing</font></span></h4>
+<p><strong>Step 6: Run Testing Python code</span></strong></p>
+<pre class="prettyprint lang-bsh">cd ~/osoyoo-robot/motor-test</pre>
+<pre class="prettyprint lang-bsh">python motor-test.py</pre>
+<a href="./image/step6-1.jpg"><img class="aligncenter size-full wp-image-17913" src="./image/step6-1.jpg" alt=""/></a>
+<p><strong><span style="color: #ff0000;">Important Note:As the raspberry pi robot car image was written into SD Card, you just need to follow the step 1 to step 3  and skip others steps, directly run the step 6 to<span style="font-size: 14px;">Testing Python code.</span></span></strong></p>
+<p>After running above python sample code, your car should move forward for 2 seconds, then move backward for 2 seconds , then turn left for 2 seconds and finally turn right for 2 seconds.</p>
+<p>If your car does not move as per above scenario, the installation should have some problem. You need double check the wire connection and software installation as per our previous steps.</p>
+<h2 style="text-align: center;">
+<a href="../../User_manual.html"><img class="alignnone wp-image-6443 size-full" src=".\image\2.jpg" alt="" width="236" height="39"></a>
+<a href="../Lesson2-Line_Follow/Lesson2_index.html"><img class="alignnone wp-image-6445 size-full" src=".\image\3.jpg" alt="" width="156" height="41"></a>
+</h2></div>
+</body></html>
